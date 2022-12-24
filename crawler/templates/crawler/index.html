@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Crawler</title>
+</head>
+<body>
+<main style="max-width: 1200px; margin: auto; display: flex; justify-content: center; flex-direction: column; align-items: center">
+    <h1>Welcome to Crawler</h1>
+    <p>
+        Crawler returns list of all links (even nested!) for the provided url
+    </p>
+    <div>
+        <form action="{% url 'search' %}" method="post">
+            {% csrf_token %}
+            <div>
+                <div>
+                    <label for="url">
+                        Insert url to crawl
+                    </label>
+                </div>
+                <div>
+                    <input  placeholder="insert url" type="text" name="url" id="url">
+                </div>
+                <div style="margin-top: 16px">
+                    <button type="submit">Go</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    {% if links %}
+        <div>
+            For the url: {{url}}
+        </div>
+        <div>result is {{links}}</div>
+    {% endif %}
+</main>
+</body>
+</html>
